@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from send_mail import send_email
+from send_mail import lambda_handler
 import json
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -27,8 +27,7 @@ app.add_middleware(
 
 @app.post("/sendEmail")
 async def send_email(EmailContent:EmailContent):
-    return {
-        'statusCode': 200,
-        'body': json.dumps("Email Sent Successfully")
-    }
+    gateway_event = json.dumps({"body": EmailContent.dict()})
+    return lambda_handler(gateway_event, None)
+
     
