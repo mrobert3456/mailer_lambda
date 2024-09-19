@@ -4,11 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["Róbert Mészáros <Robert.Meszaros1@ibm.com>"]
 readme = "README.md"
+package-mode = false 
 
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = {extras = ["standard"], version = "^0.115.0"}
 boto3 = "^1.35.21"
+pydantic = "^2.9.2"
 
 
 [build-system]
