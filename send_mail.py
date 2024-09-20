@@ -42,7 +42,12 @@ def send_email(name, email, message):
     }
 
 def verify_captcha(token):
-    request = requests.post("https://www.google.com/recaptcha/api/siteverify", data=json.dumps({"secret": os.getenv("RECAPTCHA_SECRET_KEY"), "response": token}))
+    data = {
+            'secret': os.getenv("RECAPTCHA_SECRET_KEY"),
+            'response': token
+        }
+
+    request = requests.post("https://www.google.com/recaptcha/api/siteverify", data = data)
 
     if request.status_code != 200 or request.json()["success"] == False:
         raise Exception(request.json()["error-codes"])
@@ -52,7 +57,7 @@ def lambda_handler(event, context):
         event_obj = json.loads(event)
         body = event_obj["body"]
 
-        verify_captcha(body["token"])
+        verify_captcha(body["token"])   
 
         name = body["name"]
         email = body["email"]
