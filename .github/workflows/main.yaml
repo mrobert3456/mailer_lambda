@@ -46,7 +46,7 @@ jobs:
         uses: montudor/action-zip@v1
 
       - name: zip lambda function
-        run: cd src && && mkdir -p ./package && cp send_mail.py /package && cd package && zip -r code.zip .
+        run: cd src && mkdir -p ./package && cp send_mail.py /package && cd package && zip -r code.zip .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
