@@ -37,7 +37,7 @@ jobs:
           python-version: "3.11"
 
       - name: install-dependencies
-        run: cd src && mkdir package && pip install -r requirements.txt ./package
+        run: cd src && pip install -r requirements.txt -t ./package
 
       - name: run tests
         run: echo "Tests are not implemented yet"
