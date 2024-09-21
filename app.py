@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from send_mail import lambda_handler
+from src.send_mail import lambda_handler
 import json
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
