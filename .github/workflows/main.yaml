@@ -37,7 +37,7 @@ jobs:
           python-version: "3.11"
 
       - name: install-dependencies
-        run: cd src && pip install -r requirements.txt
+        run: cd src && pip install -r requirements.txt ./package
 
       - name: run tests
         run: echo "Tests are not implemented yet"
@@ -46,7 +46,7 @@ jobs:
         uses: montudor/action-zip@v1
 
       - name: zip lambda function
-        run: cd src && zip -r code.zip .
+        run: cd src && cp send_mail.py /package && cd package && zip -r code.zip .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -56,4 +56,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: deploy lambda_function
-        run: aws lambda update-function-code --function-name send_mail_function --zip-file fileb://src/code.zip
+        run: aws lambda update-function-code --function-name send_mail_function --zip-file fileb://src/package/code.zip
