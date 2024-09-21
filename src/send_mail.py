@@ -51,14 +51,10 @@ def verify_captcha(token):
 
 def lambda_handler(event, context):
     try:
-        event_obj = json.loads(event)
-        body = event_obj["body"]
-
-        verify_captcha(body["token"])   
-
-        name = body["name"]
-        email = body["email"]
-        message = body["message"]
+        verify_captcha(event["token"])   
+        name = event["name"]
+        email = event["email"]
+        message = event["message"]
         return send_email(name, email ,message)
     
     except Exception as e:
