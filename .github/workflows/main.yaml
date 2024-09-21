@@ -56,4 +56,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: deploy lambda_function
-        run: aws lambda update-function-code --function-name send_mail_function --zip-file fileb://code.zip
+        run: aws lambda update-function-code --function-name send_mail_function --zip-file fileb://src/code.zip
