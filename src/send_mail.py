@@ -54,7 +54,7 @@ def lambda_handler(event, context):
         event_obj = json.loads(event)
         body = event_obj["body"]
 
-        verify_captcha(body["token"])   
+        #verify_captcha(body["token"])   
 
         name = body["name"]
         email = body["email"]
