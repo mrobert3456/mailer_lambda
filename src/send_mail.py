@@ -2,7 +2,7 @@ import json
 import boto3
 from botocore.exceptions import ClientError
 import requests
-
+import os
 def send_email(name, email, message):
     client = boto3.client('ses')   
     
