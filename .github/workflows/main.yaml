@@ -48,7 +48,6 @@ jobs:
       - name: zip lambda function
         run: |
           cd src
-          mkdir -p ./package
           cp send_mail.py ./package
           cd package
           zip -r code.zip .

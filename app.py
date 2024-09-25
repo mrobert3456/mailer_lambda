@@ -26,7 +26,7 @@ app.add_middleware(
 
 @app.post("/sendEmail")
 async def send_email(EmailContent:EmailContent):
-    gateway_event = json.dumps({"body": EmailContent.dict()})
+    gateway_event = json.dumps(EmailContent.model_dump())
 
     
     return lambda_handler(gateway_event, None)
